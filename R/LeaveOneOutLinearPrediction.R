@@ -122,7 +122,8 @@ SummarizeLeaveOneOutLinearPrediction <- function(models) {
   pfl <- as.vector(sapply(mdl, function(x) x$full$stats['p_value'])); 
   prs <- as.vector(sapply(1:length(mdl), function(i) shapiro.test(prd[, i]-obs[, i])$p.value));
   prc <- as.vector(sapply(mdl, function(x) rev(x$reduced$stats[, 'P_Chisq'])[[1]]));
-  stt <- cbind('N'=num, 'MSE'=mse, 'P_Residual'=prs, 'P_KS'=pks,
+  aic <- as.vector(sapply(mdl, function(x) {a <- x$reduced$stats[, 3:4]; abs(a[nrow(a), 2]-a[nrow(a), 1]); }))
+  stt <- cbind('N'=num, 'MSE'=mse, 'AIC_Diff'=aic, 'P_Residual'=prs, 'P_KS'=pks,
                'P_Reduced'=prc, 'Corr_LOOCV'=as.vector(crr[, 1]), 'P_Corr_LOOCV'=as.vector(crr[, 2]), 'P_Full'=pfl);
   rownames(stt) <- names(mdl); 
   

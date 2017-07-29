@@ -97,4 +97,6 @@ ClassifyUnsupervised <- function(predictor, num_group=2,
   
   cls <- sapply(res, function(x) x[[1]]); 
   dimnames(cls) <- list(rownames(predictor), names(res));
+  
+  
 }
