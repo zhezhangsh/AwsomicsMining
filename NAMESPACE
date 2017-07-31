@@ -1,3 +1,4 @@
+export("StepForwardLinearPrediction");
 export("LeaveOneOutLinearPrediction");
 export("SummarizeLeaveOneOutLinearPrediction");
 export("ClassifyUnsupervised");
