@@ -13,7 +13,7 @@ StepForwardLinearPrediction <- function(df0, df1, top=1, p.cutoff=0.05, max.step
   top <- max(1, top);
   p.cutoff <- min(max(p.cutoff, 0), 0.25); 
   
-  for (i in 2:ncol(df)) if (is.character(df[[i]])) df[[i]] <- factor(df[[i]]); 
+  for (i in 2:ncol(df0)) if (is.character(df0[[i]])) df0[[i]] <- factor(df0[[i]]); 
   
   npr <- 0; # current number of predictors in the model
   fml <- paste(colnames(df0)[1], '~'); 
@@ -44,9 +44,9 @@ StepForwardLinearPrediction <- function(df0, df1, top=1, p.cutoff=0.05, max.step
   
   ###############################################################################################
   # Add predictors step by step
-  while (selected > 0 & step <= max.step) {
+  while (selected > 0 & step < max.step) {
     step <- step+1;
-    cat('Step', step, '\n'); 
+    # cat('Step', step, '\n'); 
     last.model <- survivors[[length(survivors)]];
     pred.name  <- paste('Predictor', step, sep=''); 
     fml        <- paste(fml, ' + Predictor', step, sep='');
