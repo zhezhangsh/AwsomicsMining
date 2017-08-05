@@ -61,7 +61,7 @@ ClassifyUnsupervised <- function(
   #################################################################################
   # Fuzzy C-Shell Clustering
   if ('cshell' %in% algorithms & length(typ[!typ])==0) {
-    csh <- cshell(as.matrix(predictor), num_group); 
+    csh <- cshell(as.matrix(predictor), centers=num_group); 
     prd <- csh$cluster;
     res$Cshell <- list(prediction=prd, model=csh); 
   };
