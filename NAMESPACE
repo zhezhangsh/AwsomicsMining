@@ -1,3 +1,4 @@
+export("FindKevinBacon");
 export("StepForwardLinearPrediction");
 export("LeaveOneOutLinearPrediction");
 export("SummarizeLeaveOneOutLinearPrediction");
